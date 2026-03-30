@@ -20,11 +20,48 @@ var moveZeroes = function (nums) {
       let temp = nums[i];
       nums[i] = nums[zeroPointer];
       nums[zeroPointer] = temp;
-      zeroPointer = i-consecutiveZeroes;
+      zeroPointer = i - consecutiveZeroes;
     }
   }
 };
 
 nums = [0, 1, 0, 3, 12];
-moveZeroes(nums);
+// moveZeroes(nums);
+console.log("Result: ", nums);
+
+var moveZeroes1 = function (nums) {
+  let replacePosition = null;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] == 0 && replacePosition == null) {
+      replacePosition = i;
+    } else if (nums[i] != 0) {
+      nums[replacePosition] = nums[i];
+      replacePosition++;
+    }
+  }
+
+  while (replacePosition < nums.length) {
+    nums[replacePosition] = 0;
+    replacePosition++;
+  }
+};
+
+// moveZeroes1(nums);
+console.log("Result: ", nums);
+
+var moveZeroes2 = function (nums) {
+  let replacePosition = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] != 0) {
+      nums[x] = nums[i];
+      x++;
+    }
+  }
+  while (replacePosition < nums.length) {
+    nums[replacePosition] = 0;
+    replacePosition++;
+  }
+};
+
+moveZeroes2(nums);
 console.log("Result: ", nums);
